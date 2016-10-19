@@ -51,26 +51,12 @@ Ye$total_exp <- recode(profile2013_core$c3q15,
 
 #recode expenditures per capita
 Ye$per_capita_exp <- profile2013_core$c3q15/profile2013_core$c0population
-Ye$per_capita_exp[Ye$per_capita_exp<20] <- "<$20"
-Ye$per_capita_exp[Ye$per_capita_exp<=34.99&Ye$per_capita_exp>=20] <- "$20-$34.99"
-Ye$per_capita_exp[Ye$per_capita_exp<=44.99&Ye$per_capita_exp>=35] <- "$35-$44.99"
-Ye$per_capita_exp[Ye$per_capita_exp<=54.99&Ye$per_capita_exp>=45] <- "$45-$54.99"
-Ye$per_capita_exp[Ye$per_capita_exp>=55] <- "$55+"
+Ye$per_capita_exp_cat[Ye$per_capita_exp<20] <- "<$20"
+Ye$per_capita_exp_cat[Ye$per_capita_exp<=34.99&Ye$per_capita_exp>=20] <- "$20-$34.99"
+Ye$per_capita_exp_cat[Ye$per_capita_exp<=44.99&Ye$per_capita_exp>=35] <- "$35-$44.99"
+Ye$per_capita_exp_cat[Ye$per_capita_exp<=54.99&Ye$per_capita_exp>=45] <- "$45-$54.99"
+Ye$per_capita_exp_cat[Ye$per_capita_exp>=55] <- '$55+'
 
-#for(i in 1:length(Ye$per_capita_exp)){
-#  if(is.na(Ye$per_capita_exp[i]))
-#  {Ye$per_capita_exp[i]<- NA
-#    }else if(Ye$per_capita_exp[i]<20&Ye$per_capita_exp[i]>0){
-#      Ye$per_capita_exp[i]<- '<$20'
-#} else if (Ye$per_capita_exp[i]<=34.99){
-#  Ye$per_capita_exp[i]<- '$20-$34.99' 
-#} else if (Ye$per_capita_exp[i]<=44.99){
-#  Ye$per_capita_exp[i]<- '$35-$44.99'
-#} else if (Ye$per_capita_exp[i]<=54.99){
-#  Ye$per_capita_exp[i]<- '$45-$54.99'
-#} else{
-#  Ye$per_capita_exp[i]<- '>$55'
-#} }
 
 #recode weight variable
 Ye$weight01 <- profile2013_core$c0coreweight_s
@@ -94,6 +80,7 @@ prop.table(svytable(~population+budget, design=Ye_2),2)
 prop.table(svytable(~governance_type+budget, design=Ye_1),2)
 prop.table(svytable(~governance_type+budget, design=Ye_2),2)
 prop.table(svytable(~total_exp+budget, design=Ye_1),2)
+prop.table(svytable(~per_capita_exp_cat+budget, design=Ye_1),2)
 #prop.table(svytable(~per_capita_exp+budget, design=Ye_1),2)
 #for BOH, NA is included in denominator when calculating percentage
 prop.table(svytable(~addNA(BOH_0)+addNA(budget),  exclude=NULL, na.action=na.pass ,design=Ye_1),2)
