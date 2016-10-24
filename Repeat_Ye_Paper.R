@@ -57,10 +57,10 @@ Ye$per_capita_exp_cat[Ye$per_capita_exp<=44.99&Ye$per_capita_exp>=35] <- "$35-$4
 Ye$per_capita_exp_cat[Ye$per_capita_exp<=54.99&Ye$per_capita_exp>=45] <- "$45-$54.99"
 Ye$per_capita_exp_cat[Ye$per_capita_exp>=55] <- '$55+'
 
-#recode Mean% of revenues from major sources
-Ye$Local <- profile2013_core$c3q17p/profile2013_core$c3q16
-Ye$Mcaid_Mcare <- profile2013_core$c3q17r/profile2013_core$c3q16
-Ye$Federal <- profile2013_core$c3q17qe/profile2013_core$c3q16
+#recode mean% revenues 
+Ye$localrev <- profile2013_core$c3q17p/profile2013_core$c3q16
+Ye$Medicaidrev<-profile2013_core$c3q17r/profile2013_core$c3q16
+Ye$Federalrev<-profile2013_core$c3q17qe/profile2013_core$c3q16
 
 #recode weight variable
 Ye$weight01 <- profile2013_core$c0coreweight_s
