@@ -98,3 +98,34 @@ prop.table(svytable(~addNA(total_exp)+addNA(budget),  exclude=NULL, na.action=na
 # this is close to the table in paper
 # prop.table(table(Ye_1$BOH_1, Ye_1$budget, useNA = c("always")),2)
 
+#means compared to paper
+library(questionr)
+wtd.mean(Ye_1$localrev[Ye_1$budget=="with budget cuts"],
+         weights=Ye_1$weights02,
+         normwt="ignored",
+         na.rm=T)
+
+wtd.mean(Ye_1$localrev[Ye_1$budget=="without budget cuts"], 
+          weights=Ye_1$weights01,
+          normwt="ignored",
+          na.rm=T)
+
+wtd.mean(Ye_1$Medicaidrev[Ye_1$budget=="with budget cuts"],
+         weights=Ye_1$weights01,
+         normwt="ignored",
+         na.rm=T)
+
+wtd.mean(Ye_1$Medicaidrev[Ye_1$budget=="without budget cuts"], 
+         weights=Ye_1$weights01,
+         normwt="ignored",
+         na.rm=T)
+
+wtd.mean(Ye_1$Federalrev[Ye_1$budget=="with budget cuts"],
+         weights=Ye_1$weights01,
+         normwt="ignored",
+         na.rm=T)
+
+wtd.mean(Ye_1$Federalrev[Ye_1$budget=="without budget cuts"], 
+         weights=Ye_1$weights01,
+         normwt="ignored",
+         na.rm=T)
