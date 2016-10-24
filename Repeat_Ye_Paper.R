@@ -5,7 +5,7 @@ core <- grepl('^c',names(profile2013), ignore.case = T)
 core[1] <- T
 profile2013_core <- profile2013[,core]
 
-#recode population variable
+#recode population variable jenine
 library(car)
 Ye <- NA
 Ye$population <- recode(profile2013_core$c0population,
